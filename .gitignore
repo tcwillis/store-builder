@@ -1,0 +1,14 @@
+.sass-cache
+*.css.map
+.idea
+node_modules
+*.iml
+npm-debug.log
+*.tar
+*.zip
+.DS_Store
+dist
+.history
+*.psd
+.doc
+.docx
