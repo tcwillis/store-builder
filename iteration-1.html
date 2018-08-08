@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center mb-4">
                 <div class="col-md-6">
                     <h1 class=" text-primary">Apple Store</h1>
                 </div>
@@ -139,44 +139,18 @@
                     </div>
                 </div>
             </div>
-            <form novalidate class="mb-5">
-                <div class="form-row">
-                    <div class="col pr-3">
-                        <p class="mb-2">
-                            <label for="inputTestUrl">Test URL</label>
-                            <input type="text" class="form-control form-control-sm" id="inputTestUrl" placeholder="Test URL" value="http://ofwtest.officeworks.com.au/campaigns/apple-store">
-                        </p>
-                        <label for="inputProdUrl">Production URL</label>
-                        <input type="text" class="form-control form-control-sm" id="inputProdUrl" placeholder="Production URL" value="http://www.officeworks.com.au/campaigns/apple-store">
-                    </div>
-                    <div class="col pl-3">
-                        <p class="mb-2">
-                            <label for="inputImagePath">Image path</label>
-                            <input type="text" class="form-control form-control-sm" id="inputImagePath" placeholder="Title" value="/images/applestore">
-                        </p>
-                        <label for="inputImagePath">Store ID</label>
-                        <input type="text" readonly="" class="form-control form-control-sm" id="staticStorePath" value="apple-store">
-                        <p class="mb-2">
-                            <small id="passwordHelpBlock" class="form-text text-muted">
-                                You must reference this ID within the CMS article for the application
-                                <a data-toggle="collapse" href="#collapseCode" role="button" aria-expanded="false" aria-controls="collapseCode">For example...</a>
-                            </small>
-                        </p>
-                        <div class="collapse" id="collapseCode">
-                            <div class="text-white p-3 mt-3 border border-success">
-                                <pre class="mb-0"><code class="text-success">&lt;div data-store-id="apple-store" /&gt;<br />&lt;script src="ow-store-ui.js"&gt;&lt;/script&gt;</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
 
         </div>
         <div class="jumbotron jumbotron-fluid bg-light border-top border-bottom p-0 ">
             <div class="container">
                 <ul class="nav nav-pills nav-fill nav-justified bg-light py-3 px-0" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link p-3 active" id="home-tab" data-toggle="tab" href="#landing-page" role="tab" aria-controls="home" aria-selected="true">
+                        <a class="nav-link p-3 active" id="config-tab" data-toggle="tab" href="#config" role="tab" aria-controls="home" aria-selected="true">
+                            <h6>Configuration</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-3" id="home-tab" data-toggle="tab" href="#landing-page" role="tab" aria-controls="home" aria-selected="true">
                             <h6>Landing Page</h6>
                         </a>
                     </li>
@@ -190,7 +164,46 @@
         </div>
         <div class="container">
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade active show" id="landing-page" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade active show" id="config">
+                    <form novalidate class="w-50">
+                        <div class="form-group">
+                            <label for="inputImagePath">Store ID</label>
+                            <input type="text" readonly="" class="form-control" id="staticStorePath" value="apple-store">
+                            <small id="passwordHelpBlock" class="form-text text-muted">
+                                You must reference this ID within the CMS article for the application
+                                <a data-toggle="collapse" href="#collapseCode" role="button" aria-expanded="false" aria-controls="collapseCode">For example...</a>
+                            </small>
+                            <div class="collapse" id="collapseCode">
+                                <div class="text-white p-3 mt-3 border border-success">
+                                    <pre class="mb-0"><code class="text-success">&lt;div data-store-id="apple-store" /&gt;<br />&lt;script src="ow-store-ui.js"&gt;&lt;/script&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputImagePath">Image path</label>
+                            <input type="text" class="form-control" id="inputImagePath" placeholder="Title" value="/images/applestore">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTestUrl">Test URL</label>
+                            <input type="text" class="form-control" id="inputTestUrl" placeholder="Test URL" value="http://ofwtest.officeworks.com.au/campaigns/apple-store">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputProdUrl">Production URL</label>
+                            <input type="text" class="form-control" id="inputProdUrl" placeholder="Production URL" value="http://www.officeworks.com.au/campaigns/apple-store">
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="landing-page" role="tabpanel" aria-labelledby="home-tab">
+                    <section class="jumbotron text-center">
+                        <div class="container">
+                            <h1 class="jumbotron-heading">Apple Store</h1>
+                            <p>Your one-stop Apple shop </p>
+                            <a href="#" class="btn btn-outline-primary">
+                                <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
+                        </div>
+                    </section>
+
                     <div class="py-3 bg-light">
                         <div class="container">
                             <div class="card-deck mb-3">
@@ -220,60 +233,7 @@
                                         <div class="text-center mb-4">
                                             <h4 class="mb-3">Content blocks</h4>
 
-                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
-                                                <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
-                                        </div>
-                                        <div class="card-deck">
-                                            <div class="card card-with-buttons-reveal text-center">
-                                                <div class="buttons-reveal">
-                                                    <a class="btn btn-primary shadow mr-2" href="#">
-                                                        <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
-
-                                                    <a class="btn btn-light shadow" href="#">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
-                                                </div>
-                                                <section class="jumbotron text-center">
-                                                    <div class="container">
-                                                        <h1 class="jumbotron-heading">Apple Store</h1>
-                                                        <p>Your one-stop Apple shop </p>
-                                                        <a href="#" class="btn btn-outline-primary">
-                                                            <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
-                                                    </div>
-                                                </section>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-deck mb-3">
-                                <div class="card">
-                                    <div class="card-header text-white bg-primary">
-                                        <div class="row justify-content-between align-items-center">
-                                            <div class="col">
-                                                <strong>Section</strong>
-                                            </div>
-                                            <div class="col text-right">
-                                                <div class="form-inline justify-content-end">
-                                                    <div class="form-group">
-                                                        <label for="staticEmail2" class="form-check-label">Order</label>
-                                                        <select class="form-control ml-3" id="inputSize">
-                                                            <option selected="" value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                        </select>
-                                                    </div>
-                                                    <button class="btn btn-outline-light btn-sm ml-3">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center mb-4">
-                                            <h4 class="mb-3">Content blocks</h4>
-
-                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
+                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addSubCategoryModal">
                                                 <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
                                         </div>
                                         <div class="card-deck">
@@ -322,7 +282,7 @@
                                         <div class="text-center mb-4">
                                             <h4 class="mb-3">Content blocks</h4>
 
-                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
+                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addSubCategoryModal">
                                                 <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
                                         </div>
                                         <div class="card-deck">
@@ -419,7 +379,7 @@
                                     <div class="card-body">
                                         <div class="text-center mb-4">
                                             <h4 class="mb-3">Content blocks</h4>
-                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
+                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addSubCategoryModal">
                                                 <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
                                         </div>
                                         <div class="card-deck">
@@ -729,102 +689,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addContentBlockModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add content block</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group row">
-                            <label for="inputDescription" class="col-sm-2 col-form-label">Type</label>
-                            <div class="col-sm-10">
-                                <select class="form-control ml-3" id="contentType" onchange="showHide(this)">
-                                    <option selected="" value="page-header">Page header</option>
-                                    <option value="plain-text">Plain text</option>
-                                    <option value="youtube-video">Youtube video</option>
-                                    <option value="category-tile">Category tile</option>
-                                    <option value="banner">Banner</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div id="frmMyform">
-                            <div id="plain-text" class="toggle">
-                                <div class="form-group row">
-                                    <label for="inputDescription" class="col-sm-2 col-form-label">Plain text</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputImage" class="col-sm-2 col-form-label">Feature image</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Feature image filename" aria-label="Category" aria-describedby="button-addon2">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputImage" class="col-sm-2 col-form-label">Skus</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="iPadProSkus" rows="2"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="youtube-video" class="toggle d-none">
-                                <div class="form-group row">
-                                    <label for="inputDescription" class="col-sm-2 col-form-label">Youtube</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputImage" class="col-sm-2 col-form-label">Feature image</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Feature image filename" aria-label="Category" aria-describedby="button-addon2">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputImage" class="col-sm-2 col-form-label">Skus</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="iPadProSkus" rows="2"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Add subcategory</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script type="text/javascript">
-        function showHide(elem) {
-            if (elem.selectedIndex != 0) {
-                //hide the divs
-                for (var i = 0; i < divsO.length; i++) {
-                    divsO[i].style.display = 'none';
-                }
-                //unhide the selected div
-                document.getElementById(elem.value).style.display = 'block';
-            }
-        }
-        window.onload = function () {
-            //get the divs to show/hide
-            divsO = document.getElementById("frmMyform").getElementsByClassName('toggle');
-        }
-    </script>
 </body>
 
 </html>
