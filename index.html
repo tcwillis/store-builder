@@ -19,10 +19,6 @@
             padding-bottom: 100px;
         }
 
-        .nav-fill {
-            background-color: #f5f5f5;
-        }
-
         .breadcrumb {
             background: transparent;
         }
@@ -72,6 +68,21 @@
         .card-with-buttons-reveal:hover:before {
             background: rgba(0, 0, 0, 0.75);
         }
+
+        .toggle {
+            display: none;
+        }
+
+        .nav-pills .nav-link {
+            color: #fff;
+            border: solid 1px #fff;
+        }
+
+        .nav-pills .nav-link:hover,
+        .nav-pills .nav-link.active {
+            background-color: #005bab;
+            border: solid 1px #005bab;
+        }
     </style>
 
 </head>
@@ -112,75 +123,72 @@
                 </nav>
             </div>
         </div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h1 class=" text-primary">Apple Store</h1>
+        <div class="jumbotron jumbotron-fluid bg-light mb-0 py-2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <h1 class=" text-primary">Apple Store</h1>
+                    </div>
                 </div>
-                <div class="col-md-6 text-right">
-                    <div class="btn-group mr-2">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <small>
-                                <span class="oi" data-glyph="external-link" title="Edit" aria-hidden="true"></span>
-                            </small> Preview
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">In Test</a>
-                            <a class="dropdown-item" href="#">In Production</a>
+                <form novalidate class="mb-5">
+                    <div class="form-row">
+                        <div class="col pr-3">
+                            <p class="mb-2">
+                                <label for="inputTestUrl" class="d-block">
+                                    <span class="align-middle d-inline-block">Test URL</span>
+                                    <small class="text-primary mt-2 float-right">
+                                        <span class="oi" data-glyph="external-link" title="Edit" aria-hidden="true"></span>
+                                        <a href="http://www.officeworks.com.au/campaigns/apple-store">
+                                            Open in new window
+                                        </a>
+                                    </small>
+                                </label>
+                                <input type="text" class="form-control form-control-sm" id="inputTestUrl" placeholder="Test URL" value="http://ofwtest.officeworks.com.au/campaigns/apple-store">
+                            </p>
+                            <label for="inputProdUrl" class="d-block">Production URL
+                                <small class="text-primary mt-2 float-right">
+                                    <span class="oi" data-glyph="external-link" title="Edit" aria-hidden="true"></span>
+                                    <a href="http://www.officeworks.com.au/campaigns/apple-store">
+                                        Open in new window
+                                    </a>
+                                </small>
+                            </label>
+                            <input type="text" class="form-control form-control-sm" id="inputProdUrl" placeholder="Production URL" value="http://www.officeworks.com.au/campaigns/apple-store">
+
                         </div>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-success" type="button">
-                            <small>
-                                <span class="oi" data-glyph="cloud-upload" title="Edit" aria-hidden="true"></span>
-                            </small> Publish
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <form novalidate class="mb-5">
-                <div class="form-row">
-                    <div class="col pr-3">
-                        <p class="mb-2">
-                            <label for="inputTestUrl">Test URL</label>
-                            <input type="text" class="form-control form-control-sm" id="inputTestUrl" placeholder="Test URL" value="http://ofwtest.officeworks.com.au/campaigns/apple-store">
-                        </p>
-                        <label for="inputProdUrl">Production URL</label>
-                        <input type="text" class="form-control form-control-sm" id="inputProdUrl" placeholder="Production URL" value="http://www.officeworks.com.au/campaigns/apple-store">
-                    </div>
-                    <div class="col pl-3">
-                        <p class="mb-2">
-                            <label for="inputImagePath">Image path</label>
-                            <input type="text" class="form-control form-control-sm" id="inputImagePath" placeholder="Title" value="/images/applestore">
-                        </p>
-                        <label for="inputImagePath">Store ID</label>
-                        <input type="text" readonly="" class="form-control form-control-sm" id="staticStorePath" value="apple-store">
-                        <p class="mb-2">
+                        <div class="col pl-3">
+                            <p class="mb-2">
+                                <label for="inputImagePath">Image path</label>
+                                <input type="text" class="form-control form-control-sm" id="inputImagePath" placeholder="Title" value="/images/applestore">
+                            </p>
+                            <label for="inputImagePath">Store ID</label>
+                            <input type="text" readonly="" class="form-control form-control-sm" id="staticStorePath" value="apple-store">
+
                             <small id="passwordHelpBlock" class="form-text text-muted">
-                                You must reference this ID within the CMS article for the application
-                                <a data-toggle="collapse" href="#collapseCode" role="button" aria-expanded="false" aria-controls="collapseCode">For example...</a>
+                                Reference this ID within the CMS article for the application
+                                <a data-toggle="collapse" href="#collapseCode" role="button" aria-expanded="false" aria-controls="collapseCode">Code snippet...</a>
                             </small>
-                        </p>
-                        <div class="collapse" id="collapseCode">
-                            <div class="text-white p-3 mt-3 border border-success">
-                                <pre class="mb-0"><code class="text-success">&lt;div data-store-id="apple-store" /&gt;<br />&lt;script src="ow-store-ui.js"&gt;&lt;/script&gt;</code></pre>
+
+                            <div class="collapse" id="collapseCode">
+                                <div class="text-white p-3 mt-3 border border-success">
+                                    <pre class="mb-0"><code class="text-success">&lt;div data-store-id="apple-store" /&gt;<br />&lt;script src="ow-store-ui.js"&gt;&lt;/script&gt;</code></pre>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
+            </div>
         </div>
-        <div class="jumbotron jumbotron-fluid bg-light border-top border-bottom p-0 ">
+        <div class="jumbotron jumbotron-fluid bg-secondary border-top border-bottom p-0">
             <div class="container">
-                <ul class="nav nav-pills nav-fill nav-justified bg-light py-3 px-0" id="myTab" role="tablist">
-                    <li class="nav-item">
+                <ul class="nav nav-pills nav-fill nav-justified bg-secondary py-3 px-0" id="myTab" role="tablist">
+                    <li class="nav-item pr-3">
                         <a class="nav-link p-3 active" id="home-tab" data-toggle="tab" href="#landing-page" role="tab" aria-controls="home" aria-selected="true">
                             <h6>Landing Page</h6>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item pl-3">
                         <a class="nav-link p-3" id="profile-tab" data-toggle="tab" href="#product-data" role="tab" aria-controls="profile" aria-selected="false">
                             <h6>Categories</h6>
                         </a>
@@ -191,306 +199,384 @@
         <div class="container">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade active show" id="landing-page" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="py-3 bg-light">
-                        <div class="container">
-                            <div class="card-deck mb-3">
-                                <div class="card">
-                                    <div class="card-header text-white bg-primary">
-                                        <div class="row justify-content-between align-items-center">
-                                            <div class="col">
-                                                <strong>Section</strong>
-                                            </div>
-                                            <div class="col text-right">
-                                                <div class="form-inline justify-content-end">
-                                                    <div class="form-group">
-                                                        <label for="staticEmail2" class="form-check-label">Order</label>
-                                                        <select class="form-control ml-3" id="inputSize">
-                                                            <option selected="" value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                        </select>
-                                                    </div>
-                                                    <button class="btn btn-outline-light btn-sm ml-3">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</button>
-                                                </div>
-                                            </div>
+                    <div class="border p-3">
+                        <div class="text-center mb-4">
+                            <h2 class="mb-3">Sections</h2>
+                            <button class="btn btn-sm btn-outline-primary">
+                                <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add section</button>
+                        </div>
+
+                        <div class="card-deck mb-3">
+                            <div class="card">
+                                <div class="card-header text-white bg-primary">
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col">
+                                            <strong>
+                                                <span class="oi mr-2" data-glyph="minus" title="Edit" aria-hidden="true"></span> Section</strong>
                                         </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center mb-4">
-                                            <h4 class="mb-3">Content blocks</h4>
-
-                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
-                                                <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
-                                        </div>
-                                        <div class="card-deck">
-                                            <div class="card card-with-buttons-reveal text-center">
-                                                <div class="buttons-reveal">
-                                                    <a class="btn btn-primary shadow mr-2" href="#">
-                                                        <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
-
-                                                    <a class="btn btn-light shadow" href="#">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
+                                        <div class="col text-right">
+                                            <div class="form-inline justify-content-end">
+                                                <div class="form-group">
+                                                    <label for="staticEmail2" class="form-check-label">Order</label>
+                                                    <select class="form-control ml-3" id="inputSize">
+                                                        <option selected="" value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
                                                 </div>
-                                                <section class="jumbotron text-center">
-                                                    <div class="container">
-                                                        <h1 class="jumbotron-heading">Apple Store</h1>
-                                                        <p>Your one-stop Apple shop </p>
-                                                        <a href="#" class="btn btn-outline-primary">
-                                                            <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
-                                                    </div>
-                                                </section>
-
+                                                <button class="btn btn-outline-light btn-sm ml-3">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-deck mb-3">
-                                <div class="card">
-                                    <div class="card-header text-white bg-primary">
-                                        <div class="row justify-content-between align-items-center">
-                                            <div class="col">
-                                                <strong>Section</strong>
-                                            </div>
-                                            <div class="col text-right">
-                                                <div class="form-inline justify-content-end">
-                                                    <div class="form-group">
-                                                        <label for="staticEmail2" class="form-check-label">Order</label>
-                                                        <select class="form-control ml-3" id="inputSize">
-                                                            <option selected="" value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                        </select>
-                                                    </div>
-                                                    <button class="btn btn-outline-light btn-sm ml-3">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="card-body">
+                                    <div class="text-center mb-4">
+                                        <h4 class="mb-3">Content blocks</h4>
+                                        <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
+                                            <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="text-center mb-4">
-                                            <h4 class="mb-3">Content blocks</h4>
-
-                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
-                                                <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
-                                        </div>
-                                        <div class="card-deck">
-                                            <div class="card card-with-buttons-reveal text-center">
-                                                <div class="buttons-reveal">
-                                                    <a class="btn btn-primary shadow mr-2" href="#">
-                                                        <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
-
-                                                    <a class="btn btn-light shadow" href="#">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
-                                                </div>
-                                                <a href="#">
-                                                    <img class="mx-auto d-block img-fluid" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/banners/OW_banner_iPad9-7_2018_v2_1200x120.jpg/optimise?auth=MjA5OTcwODkwMg__"
-                                                        alt="Card image cap">
-                                                </a>
-
+                                    <div class="card-deck">
+                                        <div class="card card-with-buttons-reveal text-center">
+                                            <div class="buttons-reveal">
+                                                <a class="btn btn-primary shadow mr-2" href="#">
+                                                    <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
+                                                <a class="btn btn-light shadow" href="#">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
                                             </div>
+                                            <section class="jumbotron text-center mb-0">
+                                                <div class="container">
+                                                    <h1 class="jumbotron-heading">Apple Store</h1>
+                                                    <p>Your one-stop Apple shop </p>
+                                                </div>
+                                            </section>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-deck mb-3">
-                                <div class="card">
-                                    <div class="card-header text-white bg-primary">
-                                        <div class="row justify-content-between align-items-center">
-                                            <div class="col">
-                                                <strong>Section</strong>
-                                            </div>
-                                            <div class="col text-right">
-                                                <div class="form-inline justify-content-end">
-                                                    <div class="form-group">
-                                                        <label for="staticEmail2" class="form-check-label">Order</label>
-                                                        <select class="form-control ml-3" id="inputSize">
-                                                            <option value="1">1</option>
-                                                            <option selected="" value="2">2</option>
-                                                            <option value="3">3</option>
-                                                        </select>
-                                                    </div>
-                                                    <button class="btn btn-outline-light btn-sm  ml-3">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</button>
+                        </div>
+                        <div class="card-deck mb-3">
+                            <div class="card">
+                                <div class="card-header text-white bg-primary">
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col">
+                                            <strong>
+                                                <span class="oi mr-2" data-glyph="minus" title="Edit" aria-hidden="true"></span> Section</strong>
+                                        </div>
+                                        <div class="col text-right">
+                                            <div class="form-inline justify-content-end">
+                                                <div class="form-group">
+                                                    <label for="staticEmail2" class="form-check-label">Order</label>
+                                                    <select class="form-control ml-3" id="inputSize">
+                                                        <option value="1">1</option>
+                                                        <option selected="" value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
                                                 </div>
+                                                <button class="btn btn-outline-light btn-sm ml-3">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="text-center mb-4">
-                                            <h4 class="mb-3">Content blocks</h4>
-
-                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
-                                                <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
-                                        </div>
-                                        <div class="card-deck">
-                                            <div class="card card-with-buttons-reveal text-center">
-                                                <div class="buttons-reveal">
-                                                    <a class="btn btn-primary shadow mr-2" href="#">
-                                                        <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
-
-                                                    <a class="btn btn-light shadow" href="#">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
-                                                </div>
-                                                <img class="mx-auto d-block" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/cat/apple-cat-iphones.png/fit?size=130x130&auth=MjA5OTcwODkwMg__"
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center mb-4">
+                                        <h4 class="mb-3">Content blocks</h4>
+                                        <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
+                                            <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
+                                    </div>
+                                    <div class="card-deck">
+                                        <div class="card card-with-buttons-reveal text-center">
+                                            <div class="buttons-reveal">
+                                                <a class="btn btn-primary shadow mr-2" href="#">
+                                                    <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
+                                                <a class="btn btn-light shadow" href="#">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
+                                            </div>
+                                            <a href="#">
+                                                <img class="mx-auto d-block img-fluid" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/banners/OW_banner_iPad9-7_2018_v2_1200x120.jpg/optimise?auth=MjA5OTcwODkwMg__"
                                                     alt="Card image cap">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">iPhone</h5>
-                                                    <p class="card-text">All the latest iPhones</p>
-                                                    <a href="#" class="btn btn-info">Explore</a>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-deck mb-3">
+                            <div class="card">
+                                <div class="card-header text-white bg-primary">
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col">
+                                            <strong>
+                                                <span class="oi mr-2" data-glyph="minus" title="Edit" aria-hidden="true"></span> Section</strong>
+                                        </div>
+                                        <div class="col text-right">
+                                            <div class="form-inline justify-content-end">
+                                                <div class="form-group">
+                                                    <label for="staticEmail2" class="form-check-label">Order</label>
+                                                    <select class="form-control ml-3" id="inputSize">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option selected="" value="3">3</option>
+                                                    </select>
                                                 </div>
-
+                                                <button class="btn btn-outline-light btn-sm  ml-3">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</button>
                                             </div>
-                                            <div class="card shadow">
-                                                <div class="card-body">
-                                                    <form>
-                                                        <div class="form-group row">
-                                                            <label for="inputTitle" class="col-sm-4 col-form-label">Title</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="inputTitle" placeholder="Title" value="iPads">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="inputDescription" class="col-sm-4 col-form-label">Description</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="inputDescription" placeholder="Descripton" value="All the latest iPads">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="inputImage" class="col-sm-4 col-form-label">Image</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="inputImage" placeholder="Image filename" value="apple-cat-macs.png">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="inputImage" class="col-sm-4 col-form-label">Link</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" class="form-control" placeholder="Search for a category..." aria-label="Category" aria-describedby="button-addon2"
-                                                                    value="ipads">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row m-0">
-                                                            <label for="inputImage" class="col-sm-4 col-form-label">Size</label>
-                                                            <div class="col-sm-8">
-                                                                <select class="form-control" id="inputSize">
-                                                                    <option selected>50%</option>
-                                                                    <option>100%</option>
-                                                                    <option>33.333%</option>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center mb-4">
+                                        <h4 class="mb-3">Content blocks</h4>
+                                        <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
+                                            <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
+                                    </div>
+                                    <div class="card-deck">
+                                        <div class="card card-with-buttons-reveal text-center">
+                                            <div class="card-header p-2">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="col text-right">
+                                                        <div class="form-inline justify-content-end">
+                                                            <div class="form-group">
+                                                                <label for="staticEmail2" class="form-check-label">Order</label>
+                                                                <select class="form-control ml-3" id="inputSize">
+                                                                    <option selected="" value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
                                                                 </select>
-                                                                <a class="mt-3 btn btn-primary" href="#">
-                                                                    Done</a>
                                                             </div>
                                                         </div>
-
-                                                    </form>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="card-deck mb-3">
-                                <div class="card">
-                                    <div class="card-header text-white bg-primary">
-                                        <div class="row justify-content-between align-items-center">
-                                            <div class="col">
-                                                <strong>Section</strong>
-                                            </div>
-                                            <div class="col text-right">
-                                                <div class="form-inline justify-content-end">
-                                                    <div class="form-group">
-                                                        <label for="staticEmail2" class="form-check-label">Order</label>
-                                                        <select class="form-control ml-3" id="inputSize">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option selected="" value="3">3</option>
-                                                        </select>
                                                     </div>
-                                                    <button class="btn btn-outline-light btn-sm  ml-3">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove section</button>
                                                 </div>
                                             </div>
+                                            <div class="buttons-reveal">
+                                                <a class="btn btn-primary shadow mr-2" href="#">
+                                                    <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
+                                                <a class="btn btn-light shadow" href="#">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
+                                            </div>
+                                            <img class="mx-auto d-block" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/cat/apple-cat-iphones.png/fit?size=130x130&auth=MjA5OTcwODkwMg__"
+                                                alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">iPhone</h5>
+                                                <p class="card-text">All the latest iPhones</p>
+                                                <a href="#" class="btn btn-info">Explore</a>
+                                            </div>
+
                                         </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center mb-4">
-                                            <h4 class="mb-3">Content blocks</h4>
-                                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
-                                                <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
-                                        </div>
-                                        <div class="card-deck">
-                                            <div class="card card-with-buttons-reveal text-center">
-                                                <div class="buttons-reveal">
-                                                    <a class="btn btn-primary shadow mr-2" href="#">
-                                                        <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
-
-                                                    <a class="btn btn-light shadow" href="#">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
-                                                </div>
-                                                <img class="mx-auto d-block" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/cat/apple-cat-ipads.png/fit?size=130x130&auth=MjA5OTcwODkwMg__"
-                                                    alt="Card image cap">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">iPads</h5>
-                                                    <p class="card-text">All the latest iPads</p>
-                                                    <a href="#" class="btn btn-info">Explore</a>
+                                        <div class="card shadow">
+                                            <div class="card-header p-2">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="col text-right">
+                                                        <div class="form-inline justify-content-end">
+                                                            <div class="form-group">
+                                                                <label for="staticEmail2" class="form-check-label">Order</label>
+                                                                <select class="form-control ml-3" id="inputSize">
+                                                                    <option value="1">1</option>
+                                                                    <option selected="" value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="card card-with-buttons-reveal text-center">
-                                                <div class="buttons-reveal">
-                                                    <a class="btn btn-primary shadow mr-2" href="#">
-                                                        <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="form-group row">
+                                                        <label for="inputTitle" class="col-sm-4 col-form-label">Title</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputTitle" placeholder="Title" value="iPads">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputDescription" class="col-sm-4 col-form-label">Description</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputDescription" placeholder="Descripton" value="All the latest iPads">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputImage" class="col-sm-4 col-form-label">Image</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputImage" placeholder="Image filename" value="apple-cat-macs.png">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputImage" class="col-sm-4 col-form-label">Link</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" placeholder="Search for a category..." aria-label="Category" aria-describedby="button-addon2"
+                                                                value="ipads">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row m-0">
+                                                        <label for="inputImage" class="col-sm-4 col-form-label">Size</label>
+                                                        <div class="col-sm-8">
+                                                            <select class="form-control" id="inputSize">
+                                                                <option selected>50%</option>
+                                                                <option>100%</option>
+                                                                <option>33.333%</option>
+                                                            </select>
+                                                            <a class="mt-3 btn btn-primary" href="#">
+                                                                Done</a>
+                                                        </div>
+                                                    </div>
 
-                                                    <a class="btn btn-light shadow" href="#">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
-                                                </div>
-                                                <img class="mx-auto d-block" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/cat/apple-cat-iphones.png/fit?size=130x130&auth=MjA5OTcwODkwMg__"
-                                                    alt="Card image cap">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">iPhone</h5>
-                                                    <p class="card-text">All the latest iPhones</p>
-                                                    <a href="#" class="btn btn-info">Explore</a>
-                                                </div>
+                                                </form>
                                             </div>
-                                            <div class="card card-with-buttons-reveal text-center">
-                                                <div class="buttons-reveal">
-                                                    <a class="btn btn-primary shadow mr-2" href="#">
-                                                        <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
 
-                                                    <a class="btn btn-light shadow" href="#">
-                                                        <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
-                                                </div>
-                                                <img class="mx-auto d-block" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/cat/apple-cat-iphones.png/fit?size=130x130&auth=MjA5OTcwODkwMg__"
-                                                    alt="Card image cap">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">iPhone</h5>
-                                                    <p class="card-text">All the latest iPhones</p>
-                                                    <a href="#" class="btn btn-info">Explore</a>
-                                                </div>
-
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
+                        <div class="card-deck mb-3">
+                            <div class="card">
+                                <div class="card-header text-white bg-primary">
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col">
+                                            <strong>
+                                                <span class="oi mr-2" data-glyph="minus" title="Edit" aria-hidden="true"></span> Section</strong>
+                                        </div>
+                                        <div class="col text-right">
+                                            <div class="form-inline justify-content-end">
+                                                <div class="form-group">
+                                                    <label for="staticEmail2" class="form-check-label">Order</label>
+                                                    <select class="form-control ml-3" id="inputSize">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option selected="" value="4">4</option>
+                                                    </select>
+                                                </div>
+                                                <button class="btn btn-outline-light btn-sm  ml-3">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove section</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center mb-4">
+                                        <h4 class="mb-3">Content blocks</h4>
+                                        <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addContentBlockModal">
+                                            <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add content block</button>
+                                    </div>
+                                    <div class="card-deck">
+                                        <div class="card card-with-buttons-reveal text-center">
+                                            <div class="card-header p-2">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="col text-right">
+                                                        <div class="form-inline justify-content-end">
+                                                            <div class="form-group">
+                                                                <label for="staticEmail2" class="form-check-label">Order</label>
+                                                                <select class="form-control ml-3" id="inputSize">
+                                                                    <option selected="" value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="buttons-reveal">
+                                                <a class="btn btn-primary shadow mr-2" href="#">
+                                                    <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
+
+                                                <a class="btn btn-light shadow" href="#">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
+                                            </div>
+                                            <img class="mx-auto d-block" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/cat/apple-cat-ipads.png/fit?size=130x130&auth=MjA5OTcwODkwMg__"
+                                                alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">iPads</h5>
+                                                <p class="card-text">All the latest iPads</p>
+                                                <a href="#" class="btn btn-info">Explore</a>
+                                            </div>
+                                        </div>
+                                        <div class="card card-with-buttons-reveal text-center">
+                                            <div class="card-header p-2">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="col text-right">
+                                                        <div class="form-inline justify-content-end">
+                                                            <div class="form-group">
+                                                                <label for="staticEmail2" class="form-check-label">Order</label>
+                                                                <select class="form-control ml-3" id="inputSize">
+                                                                    <option value="1">1</option>
+                                                                    <option selected="" value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="buttons-reveal">
+                                                <a class="btn btn-primary shadow mr-2" href="#">
+                                                    <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
+
+                                                <a class="btn btn-light shadow" href="#">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
+                                            </div>
+                                            <img class="mx-auto d-block" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/cat/apple-cat-iphones.png/fit?size=130x130&auth=MjA5OTcwODkwMg__"
+                                                alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">iPhone</h5>
+                                                <p class="card-text">All the latest iPhones</p>
+                                                <a href="#" class="btn btn-info">Explore</a>
+                                            </div>
+                                        </div>
+                                        <div class="card card-with-buttons-reveal text-center">
+                                            <div class="card-header p-2">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="col text-right">
+                                                        <div class="form-inline justify-content-end">
+                                                            <div class="form-group">
+                                                                <label for="staticEmail2" class="form-check-label">Order</label>
+                                                                <select class="form-control ml-3" id="inputSize">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option selected="" value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="buttons-reveal">
+                                                <a class="btn btn-primary shadow mr-2" href="#">
+                                                    <span class="oi" data-glyph="pencil" title="Edit" aria-hidden="true"></span> Edit</a>
+
+                                                <a class="btn btn-light shadow" href="#">
+                                                    <span class="oi" data-glyph="trash" title="Edit" aria-hidden="true"></span> Remove</a>
+                                            </div>
+                                            <img class="mx-auto d-block" src="https://images.officeworks.com.au/api/2/img/https://www.officeworks.com.au/images/applestore/cat/apple-cat-iphones.png/fit?size=130x130&auth=MjA5OTcwODkwMg__"
+                                                alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">iPhone</h5>
+                                                <p class="card-text">All the latest iPhones</p>
+                                                <a href="#" class="btn btn-info">Explore</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
                 <div class="tab-pane fade" id="product-data" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="border p-3">
                         <div class="text-center mb-4">
                             <h2 class="mb-3">Categories</h2>
-
                             <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addSubCategoryModal">
                                 <span class="oi" data-glyph="plus" title="Edit" aria-hidden="true"></span> Add category</button>
                         </div>
 
                         <div class="card-deck mb-3">
-
                             <div class="card">
                                 <div class="card-header text-white bg-primary">
                                     <div class="row justify-content-between align-items-center">
@@ -672,18 +758,24 @@
                 </div>
             </div>
         </div>
-
     </main>
 
-
-    <nav class="navbar shadow-sm p-3 fixed-bottom navbar-light border-top" style="background-color: #f8f8f8; box-shadow: 0 -.125rem .55rem rgba(0,0,0,.075)!important;">
+    <nav class="shadow-sm p-3 fixed-bottom navbar-light border-top" style="background-color: #f8f8f8; box-shadow: 0 -.125rem .55rem rgba(0,0,0,.075)!important;">
         <div class="container">
-            <div class="row w-100">
-                <div class="col-md-6">
+            <div class="row justify-content-between">
+                <div class="col-6">
                     <button class="btn btn-primary mr-3" type="button">
                         Save changes
                     </button>
                     <a href="#">Discard changes...</a>
+                </div>
+                <div class="col-6 text-right">
+                    <button class="btn btn-success" type="button">
+                        <small>
+
+                            <span class="oi" data-glyph="cloud-upload" title="Edit" aria-hidden="true"></span>
+                        </small> Publish
+                    </button>
                 </div>
             </div>
         </div>
@@ -694,7 +786,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add subcategory</h5>
+                    <h5 class="modal-title">Add subcategory</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -743,8 +835,9 @@
                         <div class="form-group row">
                             <label for="inputDescription" class="col-sm-2 col-form-label">Type</label>
                             <div class="col-sm-10">
-                                <select class="form-control ml-3" id="contentType" onchange="showHide(this)">
-                                    <option selected="" value="page-header">Page header</option>
+                                <select class="form-control w-auto" id="contentType" onchange="showHide(this)">
+                                    <option selected="" value="">Choose...</option>
+                                    <option value="page-header">Page header</option>
                                     <option value="plain-text">Plain text</option>
                                     <option value="youtube-video">Youtube video</option>
                                     <option value="category-tile">Category tile</option>
@@ -753,43 +846,76 @@
                             </div>
                         </div>
                         <div id="frmMyform">
-                            <div id="plain-text" class="toggle">
+                            <div id="page-header" class="toggle">
                                 <div class="form-group row">
-                                    <label for="inputDescription" class="col-sm-2 col-form-label">Plain text</label>
+                                    <label for="inputText" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <input type="text" class="form-control" placeholder="e.g. My Store Name" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputImage" class="col-sm-2 col-form-label">Feature image</label>
+                                    <label for="inputText" class="col-sm-2 col-form-label"> Description</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Feature image filename" aria-label="Category" aria-describedby="button-addon2">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputImage" class="col-sm-2 col-form-label">Skus</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="iPadProSkus" rows="2"></textarea>
+                                        <textarea class="form-control" id="inputText" rows="4"></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <div id="youtube-video" class="toggle d-none">
+                            <div id="plain-text" class="toggle">
                                 <div class="form-group row">
-                                    <label for="inputDescription" class="col-sm-2 col-form-label">Youtube</label>
+                                    <label for="inputText" class="col-sm-2 col-form-label">Text</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <textarea class="form-control" id="inputText" rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="youtube-video" class="toggle">
+                                <div class="form-group row">
+                                    <label for="inputTitleYoutube" class="col-sm-2 col-form-label">Title</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="e.g. My Video Title" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputImage" class="col-sm-2 col-form-label">Feature image</label>
+                                    <label for="inputImage" class="col-sm-2 col-form-label">URL</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Feature image filename" aria-label="Category" aria-describedby="button-addon2">
+                                        <input type="text" class="form-control" placeholder="Youtube embed url" aria-label="Category" aria-describedby="button-addon2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="category-tile" class="toggle">
+                                <div class="form-group row">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputTitle" placeholder="Title">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputImage" class="col-sm-2 col-form-label">Skus</label>
+                                    <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="iPadProSkus" rows="2"></textarea>
+                                        <input type="text" class="form-control" id="inputDescription" placeholder="Descripton">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputImage" placeholder="Image filename">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputImage" class="col-sm-2 col-form-label">Link</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="Search for a category..." aria-label="Category" aria-describedby="button-addon2"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputImage" class="col-sm-2 col-form-label">Size</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="inputSize">
+                                            <option selected>50%</option>
+                                            <option>100%</option>
+                                            <option>33.333%</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -798,7 +924,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Add subcategory</button>
+                    <button type="button" class="btn btn-primary">Add content block</button>
                 </div>
             </div>
         </div>
